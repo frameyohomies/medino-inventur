@@ -18,10 +18,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'delta')->textInput() ?>
 
-    <?= $form->field($model, 'bestand_nach')->textInput() ?>
-
-    <?= $form->field($model, 'gebucht_am')->textInput() ?>
-
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>

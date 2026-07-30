@@ -7,7 +7,8 @@ USE inventur;
 CREATE TABLE benutzer (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     entra_oid VARCHAR(100) NOT NULL UNIQUE,
-    name VARCHAR(150) NOT NULL,
+    firstname VARCHAR(150) NOT NULL,
+    lastname VARCHAR(150) NOT NULL,
     email VARCHAR(255) NOT NULL,
     rolle ENUM('admin', 'ordihilfe') NOT NULL DEFAULT 'ordihilfe',
     aktiv TINYINT(1) NOT NULL DEFAULT 1,
@@ -41,9 +42,9 @@ CREATE TABLE bestand_bewegung (
     INDEX idx_benutzer_zeit (benutzer_id, gebucht_am)
 );
 
-INSERT INTO benutzer (entra_oid, name, email, rolle) VALUES
-    ('test-oid-admin-001', 'Admin Test', 'admin.test@medino.at', 'admin'),
-    ('test-oid-user-001', 'Max Mustermann', 'max.mustermann@medino.at', 'ordihilfe');
+INSERT INTO benutzer (entra_oid, firstname, lastname, email, rolle) VALUES
+    ('test-oid-admin-001', 'Admin', 'Test', 'admin.test@medino.at', 'admin'),
+    ('test-oid-user-001', 'Max', 'Mustermann', 'max.mustermann@medino.at', 'ordihilfe');
 
 INSERT INTO produkt (name, barcode, standort, quantitaet, mindestbestand) VALUES
     ('Einmalhandschuhe (Box)', '4006381333931', 'Lager Regal A, Fach 1', 50, 10);

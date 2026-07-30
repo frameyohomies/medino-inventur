@@ -12,17 +12,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'entra_oid')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'firstname')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'lastname')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'rolle')->dropDownList([ 'admin' => 'Admin', 'ordihilfe' => 'Mitarbeiter', ], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'rolle')->dropDownList([ 'admin' => 'Admin', 'ordihilfe' => 'Ordihilfe', ], ['prompt' => '']) ?>
-
-    <?= $form->field($model, 'aktiv')->textInput() ?>
-
-    <?= $form->field($model, 'erstellt_am')->textInput() ?>
+    <?= $form->field($model, 'aktiv')->checkbox() ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

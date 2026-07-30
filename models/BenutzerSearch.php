@@ -18,7 +18,7 @@ class BenutzerSearch extends Benutzer
     {
         return [
             [['id', 'aktiv'], 'integer'],
-            [['entra_oid', 'name', 'email', 'rolle', 'erstellt_am'], 'safe'],
+            [['entra_oid', 'firstname', 'lastname', 'email', 'rolle', 'erstellt_am'], 'safe'],
         ];
     }
 
@@ -65,7 +65,8 @@ class BenutzerSearch extends Benutzer
         ]);
 
         $query->andFilterWhere(['like', 'entra_oid', $this->entra_oid])
-            ->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'firstname', $this->firstname])
+            ->andFilterWhere(['like', 'lastname', $this->lastname])
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'rolle', $this->rolle]);
 

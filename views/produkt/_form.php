@@ -22,10 +22,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'mindestbestand')->textInput() ?>
 
-    <?= $form->field($model, 'erstellt_am')->textInput() ?>
-
-    <?= $form->field($model, 'aktualisiert_am')->textInput() ?>
-
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>

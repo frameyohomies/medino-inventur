@@ -9,7 +9,8 @@ use Yii;
  *
  * @property int $id
  * @property string $entra_oid
- * @property string $name
+ * @property string $firstname
+ * @property string $lastname
  * @property string $email
  * @property string $rolle
  * @property int $aktiv
@@ -42,12 +43,12 @@ class Benutzer extends \yii\db\ActiveRecord
         return [
             [['rolle'], 'default', 'value' => 'ordihilfe'],
             [['aktiv'], 'default', 'value' => 1],
-            [['entra_oid', 'name', 'email'], 'required'],
+            [['entra_oid', 'firstname', 'lastname', 'email'], 'required'],
             [['rolle'], 'string'],
             [['aktiv'], 'integer'],
             [['erstellt_am'], 'safe'],
             [['entra_oid'], 'string', 'max' => 100],
-            [['name'], 'string', 'max' => 150],
+            [['firstname', 'lastname'], 'string', 'max' => 150],
             [['email'], 'string', 'max' => 255],
             ['rolle', 'in', 'range' => array_keys(self::optsRolle())],
             [['entra_oid'], 'unique'],
@@ -62,7 +63,8 @@ class Benutzer extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'entra_oid' => Yii::t('app', 'Entra Oid'),
-            'name' => Yii::t('app', 'Name'),
+            'firstname' => Yii::t('app', 'Vorname'),
+            'lastname' => Yii::t('app', 'Nachname'),
             'email' => Yii::t('app', 'Email'),
             'rolle' => Yii::t('app', 'Rolle'),
             'aktiv' => Yii::t('app', 'Aktiv'),
