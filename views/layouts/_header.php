@@ -14,16 +14,16 @@ $items = [
         'url' => ['/site/index'],
     ],
     [
-        'label' => 'About',
-        'url' => ['/site/about'],
+        'label' => 'Benutzer',
+        'url' => ['/benutzer/index'],
     ],
     [
-        'label' => 'Contact',
-        'url' => ['/site/contact'],
+        'label' => 'Produke',
+        'url' => ['/produkt/index'],
     ],
     [
-        'label' => 'Login',
-        'url' => ['/site/login'],
+        'label' => 'Verlauf',
+        'url' => ['/bestand-bewegung/index'],
         'visible' => Yii::$app->user->isGuest,
     ],
     [
