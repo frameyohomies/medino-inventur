@@ -5,6 +5,57 @@ main > .container {
     min-height: 100%;
 }
 
+:root {
+    --color-primary: #8ea699;
+    --color-primary-light: #bbcac2;
+    --color-primary-lighter: #e8edeb;
+    --color-primary-dark: #55645c;
+    --color-primary-darker: #1c211f;
+
+    --color-accent: #a68e9b;
+    --color-accent-light: #ded4da;
+    --color-accent-dark: #6e5c67;
+
+    --color-background: #f7f9f8;
+    --color-surface: #ffffff;
+    --color-border: #d2dbd6;
+
+    --color-text-primary: #2f3b36;
+    --color-text-secondary: #6b7871;
+
+    --color-success: #6e9c82;
+    --color-warning: #c9a66b;
+    --color-danger: #b36159;
+
+    --shadow-soft: 0 2px 8px rgba(43, 53, 49, 0.08);
+    --shadow-medium: 0 4px 16px rgba(43, 53, 49, 0.15);
+    --shadow-strong: 0 8px 24px rgba(43, 53, 49, 0.25);
+
+    --font-family-base: 'Syne', sans-serif;
+}
+
+@font-face {
+    font-family: 'Syne';
+    src: url('../fonts/syne/static/Syne-Regular.ttf') format('ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Syne';
+    src: url('../fonts/syne/static/Syne-Bold.ttf') format('ttf');
+    font-weight: 700;
+    font-style: normal;
+}
+
+:root {
+    --font-family-base: 'Syne', sans-serif;
+}
+
+body {
+    font-family: var(--font-family-base);
+}
+
 .not-set {
     color: var(--bs-danger);
     font-style: italic;
