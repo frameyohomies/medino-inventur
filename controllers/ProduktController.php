@@ -121,7 +121,8 @@ class ProduktController extends Controller
     {
         $produkt = $this->findModel($id);
         $delta = (int) Yii::$app->request->post('delta');
-        $benutzerId = Yii::$app->user->id;
+//        $benutzerId = Yii::$app->user->id;
+        $benutzerId = 2;
 
         if ($produkt->buche($delta, $benutzerId)) {
             Yii::$app->session->setFlash('success', 'Buchung erfolgreich');
@@ -130,6 +131,25 @@ class ProduktController extends Controller
         }
 
         return $this->redirect(['view', 'id' => $id]);
+    }
+
+    public function actionLookup($barcode)
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        $produkt = Produkt::findOne(['barcode' => $barcode]);
+
+        if (!$produkt) {
+            return ['success' => false];
+        }
+
+        return [
+            'success' => true,
+            'id' => $produkt->id,
+            'name' => $produkt->name,
+            'quantitaet' => $produkt->quantitaet,
+            'mindestbestand' => $produkt->mindestbestand,
+        ];
     }
 
     /**
