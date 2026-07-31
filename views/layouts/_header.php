@@ -14,11 +14,11 @@ $items = [
         'url' => ['/site/index'],
     ],
     [
-        'label' => 'Benutzer',
+        'label' => 'User',
         'url' => ['/benutzer/index'],
     ],
     [
-        'label' => 'Produke',
+        'label' => 'Bestand',
         'url' => ['/produkt/index'],
     ],
     [

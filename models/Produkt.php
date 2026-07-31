@@ -83,4 +83,35 @@ class Produkt extends \yii\db\ActiveRecord
         return new ProduktQuery(get_called_class());
     }
 
+    public function buche($delta, $benutzerId)
+    {
+        $transaction = Yii::$app->db->beginTransaction();
+        try {
+            $neuerBestand = $this->quantitaet + $delta;
+
+            $bewegung = new BestandBewegung();
+            $bewegung->produkt_id = $this->id;
+            $bewegung->benutzer_id = $benutzerId;
+            $bewegung->delta = $delta;
+            $bewegung->bestand_nach = $neuerBestand;
+
+            if(!$bewegung->save()) {
+                $transaction->rollBack();
+                return false;
+            }
+
+            $this->quantitaet = $neuerBestand;
+            if(!$this->save()) {
+                $transaction->rollBack();
+                return false;
+            }
+
+            $transaction->commit();
+            return true;
+        } catch (\Exception $e) {
+            $transaction->rollBack();
+            return false;
+        }
+    }
+
 }

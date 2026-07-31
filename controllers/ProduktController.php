@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Produkt;
 use app\models\ProduktSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -114,6 +115,21 @@ class ProduktController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionBuchen($id)
+    {
+        $produkt = $this->findModel($id);
+        $delta = (int) Yii::$app->request->post('delta');
+        $benutzerId = Yii::$app->user->id;
+
+        if ($produkt->buche($delta, $benutzerId)) {
+            Yii::$app->session->setFlash('success', 'Buchung erfolgreich');
+        } else {
+            Yii::$app->session->setFlash('error', 'Buchung fehlgeschlagen.');
+        }
+
+        return $this->redirect(['view', 'id' => $id]);
     }
 
     /**
