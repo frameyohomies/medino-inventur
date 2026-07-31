@@ -77,7 +77,7 @@ function startScan() {
   html5QrCode.start(
     {facingMode: "environment"},
     {
-      fps: 1,
+      fps: 20,
       qrbox: {width: 300, height: 150},
       aspectRatio: 1.7777778,
       videoConstraints: {
@@ -94,4 +94,28 @@ function startScan() {
     console.error("Kamera konnte nicht gestartet werden:", err);
   });
 }
+document.addEventListener('DOMContentLoaded', function () {
+  const scanModal = document.getElementById('scanModal');
+  if (scanModal) {
+    scanModal.addEventListener('hidden.bs.modal', resetScanModal);
+  }
 
+  // dein bestehender barcodeInput-Listener bleibt hier
+});
+
+function resetScanModal() {
+  aktuelleProduktId = null;
+
+  document.getElementById('barcodeInput').value = '';
+  document.getElementById('produktName').innerText = '';
+  document.getElementById('produktQuantitaet').innerText = '';
+  document.getElementById('deltaInput').value = 0;
+
+  document.getElementById('scanStep').style.display = 'block';
+  document.getElementById('produktStep').style.display = 'none';
+  document.getElementById('fehlerStep').style.display = 'none';
+
+  if (html5QrCode) {
+    html5QrCode.stop().catch(() => {});
+  }
+}
